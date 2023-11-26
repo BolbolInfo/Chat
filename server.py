@@ -35,7 +35,7 @@ def load_last(ROOM_CHICE):
     for i in chatH:
         ch+=i
     if ch=='':
-        return 'no previos chat'
+        return '\n no previos chat'
     else:
         return '\n'+ch
 
