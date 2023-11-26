@@ -1,7 +1,7 @@
 import socket
 import threading
 from colors import text  # Import the colors module
-
+import time
 
 def receive_messages():
     while True:
@@ -13,10 +13,12 @@ def receive_messages():
             print("Error:", e)
             break
 
+
 def send_message(username, color_code):
     while True:
         message = input(color_code+'['+username+'] : ' +"\033[0m" )
-        formatted_message = "\n" + color_code+'['+username+'] : ' +"\033[0m" +message# Apply color to username
+        formatted_time = time.strftime("[%Y-%m-%d] [%H:%M:%S] ", time.localtime())
+        formatted_message = "\n"+formatted_time + color_code+'['+username+'] : ' +"\033[0m" +message# Apply color to username
         client_socket.sendall(formatted_message.encode())  # Send the formatted message
 
 
